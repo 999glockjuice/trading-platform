@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Trading Platform</title>
+    <link rel="stylesheet" href="../styles/professional.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Left Panel - Branding -->
+        <div class="auth-left-panel">
+            <div class="brand-logo">
+                <div class="logo-icon">TP</div>
+                <h1>Trading Platform</h1>
+            </div>
+            
+            <div class="brand-tagline">
+                <h2>Start Your Trading Journey</h2>
+                <p>Join thousands of traders accessing global markets with our professional platform.</p>
+            </div>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Demo account with $500,000 virtual funds</span>
+                </div>
+                
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Real-time market data & advanced charts</span>
+                </div>
+                
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Multiple asset classes: Stocks, Crypto, Forex</span>
+                </div>
+                
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Bank-level security & 2FA protection</span>
+                </div>
+                
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Professional trading tools & analytics</span>
+                </div>
+            </div>
+            
+            <div class="account-types">
+                <h3>Choose Your Account Type</h3>
+                <div class="account-cards">
+                    <div class="account-card" id="demoAccountCard">
+                        <div class="account-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h4>Demo Account</h4>
+                        <div class="account-balance">$500,000 Virtual</div>
+                        <ul class="account-features">
+                            <li>Risk-free trading practice</li>
+                            <li>All market features included</li>
+                            <li>Perfect for beginners</li>
+                            <li>No real money required</li>
+                        </ul>
+                        <div class="account-recommended">Recommended for Learning</div>
+                    </div>
+                    
+                    <div class="account-card" id="liveAccountCard">
+                        <div class="account-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Live Account</h4>
+                        <div class="account-balance">$20 Starting Balance</div>
+                        <ul class="account-features">
+                            <li>Real money trading</li>
+                            <li>Deposit & withdraw funds</li>
+                            <li>Priority support</li>
+                            <li>Advanced trading features</li>
+                        </ul>
+                        <div class="account-notice">Minimum $50 to withdraw</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="security-notice">
+                <i class="fas fa-shield-alt"></i>
+                <p>Your security is our priority. All data is encrypted and protected.</p>
+            </div>
+        </div>
+        
+        <!-- Right Panel - Registration Form -->
+        <div class="auth-right-panel">
+            <div class="auth-form-container">
+                <div class="form-header">
+                    <h2>Create Your Account</h2>
+                    <p>Fill in your details to get started</p>
+                </div>
+                
+                <!-- Registration Form -->
+                <form id="registrationForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="regEmail">Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="regEmail" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="regUsername">Username</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="regUsername" name="username" placeholder="Choose a username" required>
+                        </div>
+                        <div class="error-message" id="usernameError"></div>
+                        <div class="input-hint">3-20 characters, letters and numbers only</div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regPassword">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="regPassword" name="password" placeholder="Create a password" required>
+                                <button type="button" class="password-toggle" id="toggleRegPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error-message" id="passwordError"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regConfirmPassword">Confirm Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="regConfirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                                <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error-message" id="confirmPasswordError"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Password Strength Meter -->
+                    <div class="password-strength">
+                        <div class="strength-label">Password Strength:</div>
+                        <div class="strength-meter">
+                            <div class="strength-bar" id="strengthBar"></div>
+                        </div>
+                        <div class="strength-text" id="strengthText">Very Weak</div>
+                    </div>
+                    
+                    <div class="password-requirements">
+                        <p>Your password must include:</p>
+                        <ul>
+                            <li id="reqLength"><i class="fas fa-circle"></i> At least 8 characters</li>
+                            <li id="reqUppercase"><i class="fas fa-circle"></i> One uppercase letter</li>
+                            <li id="reqLowercase"><i class="fas fa-circle"></i> One lowercase letter</li>
+                            <li id="reqNumber"><i class="fas fa-circle"></i> One number</li>
+                            <li id="reqSpecial"><i class="fas fa-circle"></i> One special character</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Account Type Selection -->
+                    <div class="form-group">
+                        <label class="section-label">Account Type</label>
+                        <div class="account-selection">
+                            <div class="account-option" data-type="demo">
+                                <input type="radio" id="accountDemo" name="accountType" value="demo" checked>
+                                <label for="accountDemo">
+                                    <strong>Demo Account</strong>
+                                    <span>Practice with $500,000 virtual funds</span>
+                                </label>
+                            </div>
+                            
+                            <div class="account-option" data-type="live">
+                                <input type="radio" id="accountLive" name="accountType" value="live">
+                                <label for="accountLive">
+                                    <strong>Live Trading Account</strong>
+                                    <span>Start with $20 real balance</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Live Account Notice -->
+                    <div class="live-account-notice hidden" id="liveAccountNotice">
+                        <div class="notice-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h4>Live Account Requirements</h4>
+                        </div>
+                        <ul>
+                            <li>Minimum deposit: $10 (you start with $20)</li>
+                            <li>Minimum withdrawal: $50 account balance</li>
+                            <li>Identity verification (KYC) required for withdrawals</li>
+                            <li>Real money transactions are subject to fees</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Terms and Conditions -->
+                    <div class="form-group terms-group">
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+                            <label for="termsAgreement">
+                                I agree to the <a href="/compliance/terms.html" target="_blank">Terms of Service</a>,
+                                <a href="/compliance/privacy.html" target="_blank">Privacy Policy</a>, and
+                                <a href="/compliance/risk_disclaimer.html" target="_blank">Risk Disclosure</a>
+                            </label>
+                        </div>
+                        <div class="error-message" id="termsError"></div>
+                        
+                        <div class="marketing-checkbox">
+                            <input type="checkbox" id="marketingConsent" name="marketingConsent">
+                            <label for="marketingConsent">
+                                I would like to receive market insights, platform updates, and promotional offers
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Age Verification -->
+                    <div class="form-group age-verification">
+                        <label class="verification-label">
+                            <input type="checkbox" id="ageVerification" name="ageVerification" required>
+                            I confirm that I am at least 18 years old and of legal age to trade in my jurisdiction
+                        </label>
+                        <div class="error-message" id="ageError"></div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <button type="submit" class="btn-primary" id="registerButton">
+                            <span id="registerText">Create Account</span>
+                            <div class="spinner hidden" id="registerSpinner"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="login.html" class="auth-link">Sign In</a></p>
+                    </div>
+                </form>
+                
+                <!-- Email Verification Notice (shown after registration) -->
+                <div id="verificationNotice" class="verification-notice hidden">
+                    <div class="notice-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Verify Your Email</h3>
+                    <p>We've sent a verification link to <strong id="registeredEmail"></strong>.</p>
+                    <p>Please check your inbox and click the link to activate your account.</p>
+                    
+                    <div class="verification-actions">
+                        <button class="btn-secondary" id="resendVerification">
+                            <i class="fas fa-redo"></i>
+                            Resend Email
+                        </button>
+                        <button class="btn-text" id="changeEmail">
+                            <i class="fas fa-edit"></i>
+                            Change Email
+                        </button>
+                    </div>
+                    
+                    <div class="verification-tips">
+                        <h4>Didn't receive the email?</h4>
+                        <ul>
+                            <li>Check your spam or junk folder</li>
+                            <li>Make sure you entered the correct email address</li>
+                            <li>Wait a few minutes and try again</li>
+                            <li>Contact support if the problem persists</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Status -->
+            <div class="system-status">
+                <div class="status-indicator online"></div>
+                <span>Platform Status: <strong>Operational</strong></span>
+                <span class="status-time">Registration is open 24/7</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+    
+    <script src="../scripts/auth/register.js"></script>
+</body>
+</html>

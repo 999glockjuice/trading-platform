@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Trading Platform</title>
+    <link rel="stylesheet" href="../styles/professional.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Left Panel - Branding -->
+        <div class="auth-left-panel">
+            <div class="brand-logo">
+                <div class="logo-icon">TP</div>
+                <h1>Trading Platform</h1>
+            </div>
+            
+            <div class="brand-tagline">
+                <h2>Professional Trading. Global Markets.</h2>
+                <p>Access stocks, cryptocurrency, forex, and commodities from a single platform.</p>
+            </div>
+            
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <h4>Real-Time Data</h4>
+                        <p>Live market prices and advanced charts</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <h4>Bank-Level Security</h4>
+                        <p>2FA, encryption, and secure transactions</p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <h4>Global Markets</h4>
+                        <p>Trade across multiple asset classes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-account-note">
+                <p><strong>Demo Account Available:</strong> Start with $500,000 virtual funds to practice trading risk-free.</p>
+            </div>
+        </div>
+        
+        <!-- Right Panel - Login Form -->
+        <div class="auth-right-panel">
+            <div class="auth-form-container">
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to your trading account</p>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="password-header">
+                            <label for="password">Password</label>
+                            <a href="#" class="forgot-password" id="forgotPassword">Forgot Password?</a>
+                        </div>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                            <button type="button" class="password-toggle" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="passwordError"></div>
+                    </div>
+                    
+                    <div class="form-group remember-me">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <label for="rememberMe">Remember this device</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn-primary" id="loginButton">
+                            <span id="loginText">Sign In</span>
+                            <div class="spinner hidden" id="loginSpinner"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="form-divider">
+                        <span>or continue with</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button type="button" class="btn-social google">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="btn-social apple">
+                            <i class="fab fa-apple"></i>
+                            <span>Apple</span>
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Two-Factor Authentication Form (hidden by default) -->
+                <form id="twoFactorForm" class="auth-form hidden">
+                    <div class="form-header">
+                        <h2>Two-Factor Authentication</h2>
+                        <p>Enter the 6-digit code from your authenticator app</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="totpCode">Authentication Code</label>
+                        <div class="totp-input-container">
+                            <input type="text" id="digit1" class="totp-digit" maxlength="1" autofocus>
+                            <input type="text" id="digit2" class="totp-digit" maxlength="1">
+                            <input type="text" id="digit3" class="totp-digit" maxlength="1">
+                            <input type="text" id="digit4" class="totp-digit" maxlength="1">
+                            <input type="text" id="digit5" class="totp-digit" maxlength="1">
+                            <input type="text" id="digit6" class="totp-digit" maxlength="1">
+                        </div>
+                        <div class="error-message" id="totpError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="button" class="btn-secondary" id="useRecoveryCode">
+                            Use Recovery Code
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn-primary" id="verify2FAButton">
+                            <span>Verify & Continue</span>
+                            <div class="spinner hidden" id="verifySpinner"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="button" class="btn-text" id="backToLogin">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Login
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Recovery Code Form (hidden by default) -->
+                <form id="recoveryForm" class="auth-form hidden">
+                    <div class="form-header">
+                        <h2>Recovery Code</h2>
+                        <p>Enter one of your 8-digit recovery codes</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recoveryCode">Recovery Code</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-key"></i>
+                            <input type="text" id="recoveryCode" name="recoveryCode" 
+                                   placeholder="Enter 8-digit recovery code" maxlength="8">
+                        </div>
+                        <div class="error-message" id="recoveryError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn-primary" id="verifyRecoveryButton">
+                            <span>Verify Recovery Code</span>
+                            <div class="spinner hidden" id="recoverySpinner"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="button" class="btn-text" id="backTo2FA">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to 2FA
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="register.html" class="auth-link">Create Account</a></p>
+                    <div class="legal-links">
+                        <a href="/compliance/terms.html">Terms of Service</a>
+                        <span class="divider">•</span>
+                        <a href="/compliance/privacy.html">Privacy Policy</a>
+                        <span class="divider">•</span>
+                        <a href="/compliance/risk_disclaimer.html">Risk Disclosure</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- System Status -->
+            <div class="system-status">
+                <div class="status-indicator online"></div>
+                <span>Platform Status: <strong>Operational</strong></span>
+                <span class="status-time">Last updated: Just now</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+    
+    <!-- Password Reset Modal -->
+    <div id="passwordResetModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reset Password</h3>
+                <button class="modal-close" id="closeResetModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Enter your email address and we'll send you instructions to reset your password.</p>
+                <div class="form-group">
+                    <label for="resetEmail">Email Address</label>
+                    <input type="email" id="resetEmail" placeholder="you@example.com">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelReset">Cancel</button>
+                <button class="btn-primary" id="sendResetEmail">Send Instructions</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../scripts/auth/login.js"></script>
+</body>
+</html>

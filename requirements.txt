@@ -1,0 +1,77 @@
+# Trading Platform - Core Dependencies
+# Version: 1.0.0
+
+# ===== WEB FRAMEWORK =====
+Flask>=3.0.0
+Flask-CORS>=4.0.0
+Werkzeug>=3.0.0
+
+# ===== AUTHENTICATION & SECURITY =====
+bcrypt>=4.0.0          # Password hashing
+PyJWT>=2.8.0           # JSON Web Tokens
+pyotp>=2.9.0           # Two-factor authentication (TOTP)
+qrcode>=7.4.0          # QR code generation for 2FA
+python-dotenv>=1.0.0   # Environment variables
+
+# ===== DATA & TRADING =====
+yfinance>=0.2.28       # Stock market data
+pandas>=2.0.0          # Data manipulation
+numpy>=1.24.0          # Numerical computing
+ccxt>=4.2.0            # Cryptocurrency exchange data
+ta>=0.10.0             # Technical analysis indicators
+
+# ===== DATABASE =====
+SQLAlchemy>=2.0.0      # ORM (for future migration)
+alembic>=1.12.0        # Database migrations
+
+# ===== REAL-TIME FEATURES =====
+Flask-SocketIO>=5.3.0  # WebSocket support
+python-socketio>=5.9.0
+eventlet>=0.33.0       # Async server
+
+# ===== EMAIL & NOTIFICATIONS =====
+email-validator>=2.0.0 # Email validation
+
+# ===== PAYMENT PROCESSING =====
+stripe>=7.0.0          # Stripe payments
+python-paypal>=1.0.0   # PayPal integration
+
+# ===== UTILITIES =====
+requests>=2.31.0       # HTTP requests
+python-dateutil>=2.8.0 # Date parsing
+pytz>=2023.0           # Timezone handling
+cachetools>=5.3.0      # Caching
+
+# ===== DEVELOPMENT & TESTING =====
+pytest>=7.4.0          # Testing framework
+pytest-cov>=4.1.0      # Test coverage
+black>=23.0.0          # Code formatting
+flake8>=6.0.0          # Code linting
+mypy>=1.5.0            # Type checking
+
+# ===== DEPLOYMENT =====
+gunicorn>=21.0.0       # Production WSGI server
+gevent>=23.0.0         # Async worker
+
+# ===== OPTIONAL (For specific features) =====
+# matplotlib>=3.7.0    # Charts (heavy, install if needed)
+# plotly>=5.17.0       # Interactive charts
+# celery>=5.3.0        # Task queue
+# redis>=5.0.0         # Cache & message broker
+
+# ===== VERSION CONSTRAINTS =====
+# Python version requirement
+python-requires>=3.9,<3.13
+
+# ===== INSTALLATION NOTES =====
+# For Termux/Android, some packages may need special handling:
+# - matplotlib may require additional system packages
+# - pandas/numpy compilation may be slow on mobile
+
+# ===== QUICK INSTALL FOR TERMUX =====
+# Run: pip install --no-deps Flask yfinance pandas numpy requests
+# Then: pip install bcrypt PyJWT pyotp qrcode python-dotenv
+
+# ===== PRODUCTION INSTALL =====
+# Run: pip install -r requirements.txt --no-deps
+# Then install dependencies individually as needed
